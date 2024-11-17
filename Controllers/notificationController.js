@@ -1,4 +1,4 @@
-const Notification = require("../models/Notification");
+const Notification = require("../Models/Notification");
 
 exports.sendNotification = async (req, res) => {
   try {
@@ -7,11 +7,8 @@ exports.sendNotification = async (req, res) => {
     const notification = new Notification({ sender, receiver, message });
     await notification.save();
     res.status(201).json({ message: "Notification sent" });
-  } 
-  catch (error) {
-    console.error("Error saving notification:", error); 
+  } catch (error) {
+    console.error("Error saving notification:", error);
     res.status(500).json({ error: "Notification failed" });
   }
 };
-
-
