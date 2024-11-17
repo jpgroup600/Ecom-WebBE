@@ -10,7 +10,7 @@ const swaggerUi = require("swagger-ui-express");
 const FileUploadRouter = require("./Routes/FileUploadRouter");
 const PublicProductRouter = require("./Routes/PublicProductsRouter");
 const GetSpecificProduct = require("./Routes/GetSpecificProductRouter");
-const notificationRoutes = require("./Routes/notificationRoutes");
+const notificationRoutes = require("./Routes/notificationrouter");
 const morgan = require("morgan");
 
 require("dotenv").config();
