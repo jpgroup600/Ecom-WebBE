@@ -5,10 +5,10 @@ const registrationController = require("../controllers/registrationController");
 
 const notificaitonrouter = express.Router();
 
-router.post("/", sendNotification);
-router.post("/register", registrationController.registerUser);
+notificaitonrouter.post("/", sendNotification);
+notificaitonrouter.post("/register", registrationController.registerUser);
 
-router.get("/:userId", async (req, res) => {
+notificaitonrouter.get("/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
 
