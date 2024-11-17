@@ -11,18 +11,18 @@ const swaggerUi = require("swagger-ui-express");
 const FileUploadRouter = require("./Routes/FileUploadRouter");
 const session = require("express-session");
 const morgan = require("morgan");
-const notificationRoutes = require('./Routes/notificationRoutes');
+const notificationRoutes = require("./Routes/notificationRoutes");
 require("dotenv").config();
 require("./config/db");
 require("./Middlewares/passportSetup");
-const notificationRoutes = require("./routes/notifications")
+const notificationRoutes = require("./routes/notifications");
 
 const PORT = process.env.PORT || 8080;
 const passport = require("passport");
 const ReviewerRouter = require("./Routes/reviewer");
 const AdminRouter = require("./Routes/Admin");
 const NewRouter = require("./Routes/New");
-const swaggerOptions = require("./config/swaggerOptions"); 
+const swaggerOptions = require("./config/swaggerOptions");
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use(
@@ -42,14 +42,12 @@ app.use(
 app.use("/images", FileUploadRouter);
 app.use("/uploads", express.static("./uploads"));
 
-
 // Middleware
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-const swaggerSpec = swaggerJSDoc(swaggerOptions); 
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Routes
@@ -61,11 +59,10 @@ app.use("/reviewer", ReviewerRouter); // Product routes
 app.use("/admin", AdminRouter); // Product routes
 app.use("/new", NewRouter);
 
-app.use('/api', notificationRoutes);
+app.use("/api", notificationRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
 
 app.use("/notifications", notificationRoutes);
 app.get("req,res", () => {
