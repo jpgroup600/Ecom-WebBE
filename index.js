@@ -10,7 +10,7 @@ const swaggerUi = require("swagger-ui-express");
 const FileUploadRouter = require("./Routes/FileUploadRouter");
 const PublicProductRouter = require("./Routes/PublicProductsRouter");
 const GetSpecificProduct = require("./Routes/GetSpecificProductRouter");
-const notificationRoutes = require("./Routes/notificationrouter");
+const notificaitonrouter = require("./Routes/notificationrouter");
 const morgan = require("morgan");
 
 require("dotenv").config();
@@ -39,8 +39,8 @@ app.use("/images", FileUploadRouter);
 app.use("/uploads", express.static("./uploads"));
 app.use("/products", PublicProductRouter);
 app.use("/products", GetSpecificProduct);
-app.use("/notifications", notificationRoutes);
-app.use("/new", notificationRoutes);
+app.use("/notifications", notificaitonrouter);
+app.use("/new", notificaitonrouter);
 app.use("/final", FinalRouter);
 
 // Middleware
