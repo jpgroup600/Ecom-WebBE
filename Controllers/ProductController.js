@@ -4,12 +4,11 @@ const MerchantModel = require("../Models/Merchant");
 
 const addProduct = async (req, res) => {
   try {
-    console.log("Request Body:", req.body);
-    console.log("User:", req.user);
     const {
       userId,
       campaignName,
       isVisitOrShip,
+      setToCompaign,
       location,
       checkDay,
       availableTime,
@@ -35,6 +34,7 @@ const addProduct = async (req, res) => {
       userId,
       email: email,
       campaignName,
+      setToCompaign,
       isVisitOrShip,
       location,
       checkDay,

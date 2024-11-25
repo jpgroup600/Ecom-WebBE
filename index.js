@@ -17,7 +17,7 @@ require("dotenv").config();
 require("./config/db");
 require("./Middlewares/passportSetup");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7000;
 const passport = require("passport");
 const ReviewerRouter = require("./Routes/reviewer");
 const AdminRouter = require("./Routes/Admin");
