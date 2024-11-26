@@ -27,6 +27,7 @@ const signup = async (req, res) => {
           success: false,
         });
     }
+    
     const userModel = new UserModel({
       name,
       email,

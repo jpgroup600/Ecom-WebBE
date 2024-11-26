@@ -4,59 +4,63 @@ const MerchantSchema = new Schema({
   name: {
     type: String,
     required: true,
-  },
-  email: {
+},
+email: {
     type: String,
     required: true,
-    unique: true,
-  },
-  password: {
+},
+password: {
     type: String,
     required: true,
-  },
-  businessName: {
+},
+phoneNumber: {
     type: String,
-  },
-  address: {
+    required: true,
+},
+birthDate: {
     type: String,
     required: false,
-  },
-  PhoneNumber: {
+},
+address: {
+    type: String,
+ 
+},
+signupPath: {
+    type: String,
+},
+influenceType: {
     type: String,
     required: true,
-  },
+},
+businessName: {
+    type: String,
+    required: true,
+},
+address : {
+    type: String,
+},
   signupPath: {
     type: String,
-    required: false,
-  },
-  TextFild1: {
+    required: true,
+},
+businessName: {
+    type: String,
+    required: true, 
+},
+textField1: {
     type: String,
     required: false,
-  },
-  TextFild2: {
+},
+textField2: {
     type: String,
     required: false,
-  },
-  TextFild3: {
+},
+textField3: {
     type: String,
     required: false,
-  },
-  image1: {
-    type: String,
-    required: false,
-  },
-  image2: {
-    type: String,
-    required: false,
-  },
-  image3: {
-    type: String,
-    required: false,
-  },
-  birthdate: {
-    type: Date,
-    required: false,
-  },
+}
+  // merchant 모델
+  
 });
 const MerchantModel = mongoose.model("merchants", MerchantSchema);
 module.exports = MerchantModel;
