@@ -94,6 +94,17 @@ const ProductSchema = new Schema({
     type: String,
     required: false,
   },
+
+  image4: {
+    type: String,
+    required: false,
+  },
+  
+  image5: {
+    type: String,
+    required: false,
+  },
+  
   status: {
     type: String,
     required: false,
