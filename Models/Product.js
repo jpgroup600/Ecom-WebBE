@@ -39,7 +39,7 @@ const ProductSchema = new Schema({
     required: true,
   },
   image: {
-    type: String,
+    type: [String],
     required: true,
   },
   textArea1: {
@@ -83,25 +83,7 @@ const ProductSchema = new Schema({
   ], 
   catagory: { type: String, required: false, default: "" },
   image1: {
-    type: String,
-    required: false,
-  },
-  image2: {
-    type: String,
-    required: false,
-  },
-  image3: {
-    type: String,
-    required: false,
-  },
-
-  image4: {
-    type: String,
-    required: false,
-  },
-  
-  image5: {
-    type: String,
+    type: [String],
     required: false,
   },
   
