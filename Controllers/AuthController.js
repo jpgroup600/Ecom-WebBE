@@ -70,8 +70,11 @@ const login = async (req, res) => {
       success: true,
       jwtToken,
       email,
+      userType: user.userType,
+      phoneNumber : user.phoneNumber,
       _id: user._id,
       name: user.name,
+      influenceType: user.influenceType,
     };
     res.status(200).json(da);
   } catch (err) {

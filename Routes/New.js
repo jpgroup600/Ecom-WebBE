@@ -75,7 +75,7 @@ NewRouter.post("/getProd", async (req, res) => {
         
         return {
           ...product.toObject(), // Convert mongoose document to plain object
-          businessName: decodedToken.businessName
+          businessName: decodedToken.businessName // 여기에서 필요한 데이터를 추가할 수 있습니다.
         };
       } catch (jwtError) {
         console.log('JWT decode error:', jwtError.message);
