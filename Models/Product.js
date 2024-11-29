@@ -27,7 +27,7 @@ const ProductSchema = new Schema({
     required: true,
   },
   location: {
-    type: String,
+    type: Object,
     required: false,
   },
   checkDay: {
