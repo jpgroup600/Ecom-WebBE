@@ -17,7 +17,8 @@ const MerchantSchema = new Schema({
   businessName: {
     type: String,
   },
-  address: {
+  
+  urladdress: {
     type: String,
     required: false,
   },
@@ -29,33 +30,9 @@ const MerchantSchema = new Schema({
     type: String,
     required: false,
   },
-  TextFild1: {
+  userType: {
     type: String,
-    required: false,
-  },
-  TextFild2: {
-    type: String,
-    required: false,
-  },
-  TextFild3: {
-    type: String,
-    required: false,
-  },
-  image1: {
-    type: String,
-    required: false,
-  },
-  image2: {
-    type: String,
-    required: false,
-  },
-  image3: {
-    type: String,
-    required: false,
-  },
-  birthdate: {
-    type: Date,
-    required: false,
+    required: true,
   },
 });
 const MerchantModel = mongoose.model("merchants", MerchantSchema);

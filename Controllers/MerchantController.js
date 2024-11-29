@@ -9,16 +9,11 @@ const signup = async (req, res) => {
       name,
       email,
       password,
-      businessName,
-      address,
       PhoneNumber,
-      signupPath,
-      TextFild1,
-      TextFild2,
-      TextFild3,
-      image1,
-      image2,
-      image3,
+      businessName,
+      urladdress,
+      userType,
+      signupPath
     } = req.body;
 
     const merchant = await MerchantModel.findOne({ email });
@@ -33,17 +28,12 @@ const signup = async (req, res) => {
     const merchantModel = new MerchantModel({
       name,
       email,
-      password: hashedPassword,
-      businessName,
-      address,
+      password,
       PhoneNumber,
-      signupPath,
-      TextFild1,
-      TextFild2,
-      TextFild3,
-      image1,
-      image2,
-      image3,
+      businessName,
+      urladdress,
+      userType,
+      signupPath
     });
 
     await merchantModel.save();
@@ -93,7 +83,10 @@ const login = async (req, res) => {
       address: merchant.address,
     });
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error", success: false });
+    res.status(500).json({ message: "Internal Server Error", 
+      success: false, 
+      error: err 
+    });
   }
 };
 
