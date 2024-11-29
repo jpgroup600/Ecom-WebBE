@@ -69,18 +69,7 @@ const ProductSchema = new Schema({
   uploadedDate: {
     type: Date,
   },
-  registeredUsers: [
-    {
-      email: {
-        type: String,
-      },
-    status:{
-      type: String,
-      default: "pending",
-     
-    }
-    },
-  ], 
+  registeredUsers: {type: Object, required: false}, 
   catagory: { type: String, required: false, default: "" },
   image1: {
     type: [String],

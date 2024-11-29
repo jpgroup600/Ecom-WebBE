@@ -6,6 +6,19 @@ const ProductModel = require("../Models/Product");
 const TabsModel = require("../Models/Tabs");
 const User = require("../Models/User");
 
+FinalRouter.post("/registerUser", async (req, res) => {
+  const {registerInfo, _id} = req.body;
+  try {
+    const product = await ProductModel.findById(_id);
+    product.registeredUsers = registerInfo;
+    await product.save();
+    return res.status(200).json({message: "User registered successfully"});
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({message: "Server error", error: error});
+  }
+});
+
 FinalRouter.post("/register", async (req, res) => {
   const { userId, productId } = req.body;
 
