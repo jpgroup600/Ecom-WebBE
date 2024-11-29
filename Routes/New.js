@@ -75,9 +75,7 @@ NewRouter.post("/getProd", async (req, res) => {
         
         return {
           ...product.toObject(), // Convert mongoose document to plain object
-          decodedData: decodedToken // Add decoded data to response
-          // Alternatively, you could replace the token with decoded data:
-          // token: decodedToken
+          decodedData: decodedToken.businessName
         };
       } catch (jwtError) {
         console.log('JWT decode error:', jwtError.message);
