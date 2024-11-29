@@ -28,7 +28,7 @@ const signup = async (req, res) => {
     const merchantModel = new MerchantModel({
       name,
       email,
-      password,
+      password: hashedPassword,
       PhoneNumber,
       businessName,
       urladdress,
