@@ -1,5 +1,6 @@
 const ProductModel = require("../Models/Product");
 const User = require("../Models/User");
+const jwt = require("jsonwebtoken");
 
 const NewRouter = require("express").Router();
 NewRouter.get("/every", async (req, res) => {
