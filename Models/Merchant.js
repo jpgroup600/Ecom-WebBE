@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const MerchantSchema = new Schema({
- 
   // merchant 모델
 
   name: {
