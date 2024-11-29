@@ -10,7 +10,7 @@ FinalRouter.post("/registerUser", async (req, res) => {
   const {registerInfo, _id} = req.body;
   try {
     const product = await ProductModel.findById(_id);
-    product.registeredUsers = registerInfo;
+    product.registeredUsers.push(registerInfo);
     await product.save();
     return res.status(200).json({message: "User registered successfully"});
   } catch (error) {
