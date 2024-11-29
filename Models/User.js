@@ -21,44 +21,20 @@ const UserSchema = new Schema({
         type: String,
         required: false,
     },
-    address: {
+    gender: {
         type: String,
-     
-    },
-    signupPath: {
-        type: String,
+        required: true,
     },
     influenceType: {
+        type: Object,
+        required: true,
+    },
+    
+    userType: {
         type: String,
         required: true,
     },
-    businessName: {
-        type: String,
-        required: true,
-    },
-    address : {
-        type: String,
-    },
-      signupPath: {
-        type: String,
-        required: true,
-    },
-    businessName: {
-        type: String,
-        required: true, 
-    },
-    textField1: {
-        type: String,
-        required: false,
-    },
-    textField2: {
-        type: String,
-        required: false,
-    },
-    textField3: {
-        type: String,
-        required: false,
-    }
+  
 
 });
 const UserModel = mongoose.model('users', UserSchema);

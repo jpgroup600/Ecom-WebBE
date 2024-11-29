@@ -17,6 +17,7 @@ const signup = async (req, res) => {
       textField1,
       textField2,
       textField3,
+      gender,
     } = req.body;
     const user = await UserModel.findOne({ email });
     if (user) {
@@ -41,6 +42,7 @@ const signup = async (req, res) => {
       textField1,
       textField2,
       textField3,
+      gender,
     });
     userModel.password = await bcrypt.hash(password, 10);
     await userModel.save();
@@ -52,6 +54,7 @@ const signup = async (req, res) => {
     res.status(500).json({
       message: "Internal Server Error",
       success: false,
+      error: err,
     });
   }
 };
