@@ -42,7 +42,7 @@ const signup = async (req, res) => {
       .status(201)
       .json({ message: "Merchant Signup Successful", success: true });
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error", success: false });
+    res.status(500).json({ message: "Internal Server Error", success: false , error: err});
   }
 };
 
@@ -79,7 +79,6 @@ const login = async (req, res) => {
       email: merchant.email,
       businessName: merchant.businessName,
       name: merchant.businessName,
-
       address: merchant.address,
     });
   } catch (err) {
