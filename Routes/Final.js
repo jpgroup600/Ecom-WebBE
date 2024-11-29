@@ -10,9 +10,20 @@ FinalRouter.post("/registerUser", async (req, res) => {
   const {registerInfo, _id} = req.body;
   try {
     const product = await ProductModel.findById(_id);
-    product.registeredUsers.push(registerInfo);
-    await product.save();
-    return res.status(200).json({message: "User registered successfully"});
+
+    const emailExists = product.registeredUsers.some(user => 
+      user.email === registerInfo.email
+    );
+    
+    if (emailExists) {
+      return res.status(205).json({ message: "Email already exists" });
+    } 
+
+    else{
+      product.registeredUsers.push(registerInfo);
+      await product.save();
+      return res.status(200).json({message: "User registered successfully"});
+    }
   } catch (error) {
     console.error(error);
     return res.status(500).json({message: "Server error", error: error});
