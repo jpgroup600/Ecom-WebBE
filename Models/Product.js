@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
-  userId: {
-    type: String,
-    required: true,
-  },
   service: {
     type:String,
     required:true,
@@ -101,6 +97,13 @@ const ProductSchema = new Schema({
     required: false,
     default: Date.now,  
   },
+
+  token: {
+    type: String,
+    required: true,
+  },
+
+
 });
   const ProductModel = mongoose.model("products", ProductSchema);
   module.exports = ProductModel;
