@@ -8,16 +8,11 @@ const signup = async (req, res) => {
       name,
       email,
       password,
-      address,
-       businessName,
-       signupPath,
       phoneNumber,
       birthDate,
-      influenceType,
-      textField1,
-      textField2,
-      textField3,
       gender,
+      userType,
+      influenceType,
     } = req.body;
     const user = await UserModel.findOne({ email });
     if (user) {
@@ -33,16 +28,11 @@ const signup = async (req, res) => {
       name,
       email,
       password,
-      address,
-       businessName,
-       signupPath,
       phoneNumber,
       birthDate,
-      influenceType,
-      textField1,
-      textField2,
-      textField3,
       gender,
+      userType,
+      influenceType,
     });
     userModel.password = await bcrypt.hash(password, 10);
     await userModel.save();
