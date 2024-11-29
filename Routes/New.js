@@ -66,7 +66,26 @@ NewRouter.post("/getProd", async (req, res) => {
   try {
     id = req.body._id;
     const products = await ProductModel.find({ _id: id });
-    res.status(200).json(products);
+    
+    // Assuming the JWT is stored in a field called 'token' in your product
+    const decodedProducts = products.map(product => {
+      try {
+        // Replace 'YOUR_JWT_SECRET' with your actual JWT secret key
+        const decodedToken = jwt.verify(product.token, process.env.JWT_SECRET);
+        
+        return {
+          ...product.toObject(), // Convert mongoose document to plain object
+          decodedData: decodedToken // Add decoded data to response
+          // Alternatively, you could replace the token with decoded data:
+          // token: decodedToken
+        };
+      } catch (jwtError) {
+        console.log('JWT decode error:', jwtError.message);
+        return product;
+      }
+    });
+
+    res.status(200).json(decodedProducts);
   } catch (err) {
     console.log(err.message);
     res
