@@ -6,6 +6,7 @@ const addProduct = async (req, res) => {
   try {
     const {
       userId,
+      service,
       campaignName,
       isVisitOrShip,
       setToCompaign,
@@ -32,6 +33,7 @@ const addProduct = async (req, res) => {
     // Create a new product with userId (no email validation here)
     const product = new ProductModel({
       userId,
+      service,
       email: email,
       campaignName,
       setToCompaign,
