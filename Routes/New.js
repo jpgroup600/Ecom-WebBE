@@ -46,7 +46,7 @@ NewRouter.post("/getProducts", async (req, res) => {
 
 NewRouter.post("/updateStatus", async (req,res) => {
   try {
-    const { productId, status, email } = req.body;
+    const { productId, status, email,statusKr } = req.body;
     const result = await ProductModel.findOneAndUpdate(
       // First argument: query conditions (what to find)
       { 
@@ -70,7 +70,7 @@ NewRouter.post("/updateStatus", async (req,res) => {
     await Notification.create({
     productId: productId,
     receiver: email,
-    message: "상품 등록 상태가 " + status + "로 변경되었습니다.",
+    message: "상품 등록 상태가 " + statusKr + "로 변경되었습니다.",
   });
 
     res.status(200).json({message: "Status changed successfully"});
