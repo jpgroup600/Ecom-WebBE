@@ -24,7 +24,7 @@ FinalRouter.post("/registerUser", async (req, res) => {
       await product.save();
 
       await Notification.create({
-        productId: productId,
+        productId: _id,
         receiver: productInfo.email,
         message: `새로운 사용자가 ${productInfo.campaignName}을 신청했습니다`
       });
