@@ -54,7 +54,9 @@ NewRouter.post("/updateStatus", async (req,res) => {
       
       // Second argument: update operation
       { 
-          $set: { 'registeredUsers.$.status': status }  // Update the status
+          $set: { 'registeredUsers.$.status': status ,
+            'registeredUsers.$.checked': "false"
+          } ,
           // $ is a positional operator that updates the matched array element
       },
       
