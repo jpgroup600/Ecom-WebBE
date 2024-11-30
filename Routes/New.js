@@ -40,6 +40,37 @@ NewRouter.post("/getProducts", async (req, res) => {
       .json({ message: "Error fetching products", error: err.message });
   }
 });
+
+
+NewRouter.post("/updateStatus", async (req,res) => {
+  try {
+    const { productId, status, email } = req.body;
+    const result = await ProductModel.findOneAndUpdate(
+      // First argument: query conditions (what to find)
+      { 
+          _id: productId,                    // Find document with this ID
+          'registeredUsers.email': email     // AND has this email in registeredUsers
+      },
+      
+      // Second argument: update operation
+      { 
+          $set: { 'registeredUsers.$.status': status }  // Update the status
+          // $ is a positional operator that updates the matched array element
+      },
+      
+      // Third argument: options
+      { new: true }  // Return the updated document instead of the original
+  );
+    res.status(200).json({message: "Status changed successfully"});
+  }
+  catch (err) {
+    console.log(err.message);
+    res
+      .status(500)
+      .json({ message: "Error fetching products", error: err.message });
+  }
+})
+
 NewRouter.post("/delete", async (req, res) => {
   try {
     // Find and delete the product based on product ID and email
