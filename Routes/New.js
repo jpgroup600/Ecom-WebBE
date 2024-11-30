@@ -66,13 +66,14 @@ NewRouter.post("/updateStatus", async (req,res) => {
     
   if(result)
   {
-    res.status(200).json({message: "Status changed successfully"});
     await Notification.create({
-      productId: productId,
-      receiver: email,
-      message: "상품 등록 상태가 " + status + "로 변경되었습니다.",
-    });
+    productId: productId,
+    receiver: email,
+    message: "상품 등록 상태가 " + status + "로 변경되었습니다.",
+  });
 
+    res.status(200).json({message: "Status changed successfully"});
+    
   }
   else
     {
