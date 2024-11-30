@@ -15,7 +15,7 @@ FinalRouter.post("/registerUser", async (req, res) => {
       user.email === registerInfo.email
     );
     
-    if (emailExists) {
+    if (false) {
       return res.status(205).json({ message: "Email already exists" });
     } 
 
