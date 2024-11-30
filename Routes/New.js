@@ -17,7 +17,7 @@ NewRouter.get("/every", async (req, res) => {
 NewRouter.post("/getOwn", async (req, res) => {
   try {
     const products = await ProductModel.find({
-      registeredUsers: { $in: [req.body.email] },
+      'registeredUsers.email': req.body.email,
     });
     res.status(200).json(products);
   } catch (err) {
