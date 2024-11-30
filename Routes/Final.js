@@ -7,7 +7,7 @@ const TabsModel = require("../Models/Tabs");
 const User = require("../Models/User");
 
 FinalRouter.post("/registerUser", async (req, res) => {
-  const {registerInfo, _id} = req.body;
+  const {registerInfo, _id, productInfo} = req.body;
   try {
     const product = await ProductModel.findById(_id);
 
@@ -20,9 +20,19 @@ FinalRouter.post("/registerUser", async (req, res) => {
     } 
 
     else{
-      product.registeredUsers.push(registerInfo);
+      product.registeredUsers.push(registerInfo); 
       await product.save();
+
+      await Notification.create({
+        productId: productId,
+        receiver: productInfo.email,
+        message: `새로운 사용자가 ${productInfo.campaignName}을 신청했습니다`
+      });
+
+      
       return res.status(200).json({message: "User registered successfully"});
+     
+
     }
   } catch (error) {
     console.error(error);
