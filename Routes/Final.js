@@ -7,7 +7,7 @@ const TabsModel = require("../Models/Tabs");
 const User = require("../Models/User");
 
 FinalRouter.post("/registerUser", async (req, res) => {
-  const {registerInfo, _id, productInfo} = req.body;
+  const {registerInfo, _id} = req.body;
   try {
     const product = await ProductModel.findById(_id);
 
@@ -25,8 +25,8 @@ FinalRouter.post("/registerUser", async (req, res) => {
 
       await Notification.create({
         productId: _id,
-        receiver: productInfo.email,
-        message: `새로운 사용자가 ${productInfo.campaignName}을 신청했습니다`
+        receiver: product.email,
+        message: `새로운 사용자가 ${product.campaignName}을 신청했습니다`
       });
 
       
