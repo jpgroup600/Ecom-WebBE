@@ -42,6 +42,7 @@ NewRouter.post("/getProducts", async (req, res) => {
 });
 
 
+
 NewRouter.post("/updateStatus", async (req,res) => {
   try {
     const { productId, status, email } = req.body;
@@ -55,7 +56,6 @@ NewRouter.post("/updateStatus", async (req,res) => {
       // Second argument: update operation
       { 
           $set: { 'registeredUsers.$.status': status ,
-            'registeredUsers.$.checked': "false"
           } ,
           // $ is a positional operator that updates the matched array element
       },
@@ -63,7 +63,21 @@ NewRouter.post("/updateStatus", async (req,res) => {
       // Third argument: options
       { new: true }  // Return the updated document instead of the original
   );
+    
+  if(result)
+  {
     res.status(200).json({message: "Status changed successfully"});
+    await Notification.create({
+      productId: productId,
+      receiver: email,
+      message: "상품 등록 상태가 " + status + "로 변경되었습니다.",
+    });
+
+  }
+  else
+    {
+      res.status(400).json({message: "Status change failed"});
+    }
   }
   catch (err) {
     console.log(err.message);
