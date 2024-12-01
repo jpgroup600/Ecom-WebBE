@@ -34,6 +34,11 @@ const MerchantSchema = new Schema({
     type: String,
     required: true,
   },
+  joinedDate: {
+    type: Date,
+    default: Date.now,
+  },
+  
 });
 const MerchantModel = mongoose.model("merchants", MerchantSchema);
 module.exports = MerchantModel;

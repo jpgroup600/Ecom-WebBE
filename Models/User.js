@@ -34,6 +34,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    joinedDate: {
+        type: Date,
+        default: Date.now,
+      },
   
 
 });
