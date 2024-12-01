@@ -70,7 +70,7 @@ NewRouter.post("/updateStatus", async (req,res) => {
     await Notification.create({
     productId: productId,
     receiver: email,
-    message: "상품 등록 상태가 " + statusKr + "로 변경되었습니다.",
+    message: "상품 등록 상태가 " + statusKr + "으로 변경되었습니다.",
   });
 
     res.status(200).json({message: "Status changed successfully"});
@@ -106,8 +106,7 @@ NewRouter.post("/delete", async (req, res) => {
     }
     res.status(200).json({ message: "Product deleted successfully" });
   } catch (err) {
-    res
-      .status(500)
+    res.status(500)
       .json({ message: "Error deleting product", error: err.message });
   }
 });
