@@ -129,15 +129,16 @@ FinalRouter.post("/registerAction", async (req, res) => {
 FinalRouter.post("/myNotifications", async (req, res) => {
   const userId = req.body.userId;
   try {
-    const notifications = await Notification.find({ receiver: userId }).select(
-      "-_id -updatedAt -sender -__v"
-    );
+    const notifications = await Notification.find({ receiver: userId })
+      .sort({ createdAt: -1 })  // Add this line: -1 for descending order (newest first)
+      .select("-_id -updatedAt -sender -__v");
+    
     return res.status(200).json(notifications);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Server error" });
   }
-});
+ );
 
 async function CreateNotification(
   sender = "Test",
