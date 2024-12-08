@@ -91,6 +91,7 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+  buisnessName: { type: String, required: false, default: "" },
 
 
 });
