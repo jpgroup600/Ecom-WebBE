@@ -138,7 +138,7 @@ FinalRouter.post("/myNotifications", async (req, res) => {
     console.error(error);
     return res.status(500).json({ message: "Server error" });
   }
- );
+});
 
 async function CreateNotification(
   sender = "Test",

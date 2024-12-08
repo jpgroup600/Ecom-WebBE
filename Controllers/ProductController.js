@@ -28,7 +28,8 @@ const addProduct = async (req, res) => {
       image2,
       image3,
       catagory,
-      token
+      token,
+      buisnessName
       
     } = req.body;
     // Create a new product with userId (no email validation here)
@@ -56,7 +57,8 @@ const addProduct = async (req, res) => {
       image2,
       image3,
       catagory,
-      token
+      token,
+      buisnessName
     });
     // Save the product to the database
     await product.save();
