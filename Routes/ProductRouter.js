@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const ProductController = require("../Controllers/ProductController");
 
+
+router.get("/approved",ProductController.getApprovedProducts)
 router.get("/:id", ProductController.getProductById);
 
 // const { authenticate } = require("../Middlewares/ProductValidation");
@@ -94,7 +96,7 @@ router.get("/getRegisteredUsers/:id", ProductController.registeredUsers);
  */
 router.delete("/delete", ProductController.deleteProduct);
 router.delete("/public", ProductController.getAllpublicProducts);
-router.get("/approved",ProductController.getApprovedProducts)
+
 
 
 
