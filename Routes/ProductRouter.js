@@ -94,6 +94,7 @@ router.get("/getRegisteredUsers/:id", ProductController.registeredUsers);
  */
 router.delete("/delete", ProductController.deleteProduct);
 router.delete("/public", ProductController.getAllpublicProducts);
+router.get("/approvedProduct",ProductController.getApprovedProducts)
 
 
 

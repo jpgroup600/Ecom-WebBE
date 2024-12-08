@@ -91,6 +91,7 @@ const getEveryProduct = async (req, res) => {
       .json({ message: "Error fetching products", error: err.message });
   }
 };
+
 // Get all products
 const getAllProducts = async (req, res) => {
   const email = req.query.email;
@@ -112,6 +113,22 @@ const getAllProducts = async (req, res) => {
       .json({ message: "Error fetching products", error: err.message });
   }
 };
+
+
+const getApprovedProducts = async (req, res) => {
+  try {
+    const products = await ProductModel.find({status: "approved"});
+    res.status(200).json(products);
+  } catch (err) {
+    console.log(err.message);
+    res
+      .status(500)
+      .json({ message: "Error fetching products", error: err.message });
+  }
+};
+
+
+
 const getSpecificProducts = async (req, res) => {
   const productId = req.query.productId;
 
@@ -276,4 +293,5 @@ module.exports = {
   getEveryProduct,
   getAllpublicProducts,
   getProductById,
+  getApprovedProducts
 };
